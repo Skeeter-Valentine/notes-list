@@ -13,5 +13,19 @@
     </ion-toolbar>
   </ion-header>
 
+  <ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item.name}}
+    </li>
+  </ul>
+
+  <!-- <form class="postForm" [formGroup]="postForm">
+    <ion-input formControlName="title" placeholder="Title"></ion-input>
+    <ion-textarea formControlName="note" placeholder="Write your note here"></ion-textarea>
+    <h1> {{title}}</h1>
+
+    <ion-button type="button" (click)="addCollection()">Clickme</ion-button>
+  </form>  -->
+
   <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>
