@@ -7,9 +7,6 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 
-
-import { ApiFirestoreService } from '../_core/services/api-firestore/api-firestore.service';
-
 @NgModule({
   imports: [
     IonicModule,
@@ -20,8 +17,7 @@ import { ApiFirestoreService } from '../_core/services/api-firestore/api-firesto
     Tab1PageRoutingModule
   ],
   declarations: [
-    Tab1Page,
-    ApiFirestoreService],
-  exports: [ApiFirestoreService]
+    Tab1Page
+  ]
 })
 export class Tab1PageModule {}

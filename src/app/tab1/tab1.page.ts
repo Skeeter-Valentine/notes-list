@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { ApiFirestoreService } from '../_core/services/api-firestore/api-firestore.service';
+import { NoteService } from '../_core/services/note/note.service';
 
 @Component({
   selector: 'app-tab1',
@@ -17,7 +17,7 @@ export class Tab1Page {
   username: string;
   constructor(firestore: Firestore,
               private formBuilder: FormBuilder,
-              private apiFirestoreService: ApiFirestoreService
+              private noteService: NoteService
               ) {
     const group = collection(firestore, 'items');
     this.items = collectionData(group);
@@ -30,7 +30,7 @@ export class Tab1Page {
 
   addCollection() {
     const formData = this.postForm.getRawValue();
-    this.apiFirestoreService.create(formData);
+    //this.apiFirestoreService.create(formData);
     console.log('it does nothing', formData);
   }
 }
