@@ -1,21 +1,27 @@
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 
+
+import { ApiFirestoreService } from '../_core/services/api-firestore/api-firestore.service';
+
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
-    // FormsModule,
-    // ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page]
+  declarations: [
+    Tab1Page,
+    ApiFirestoreService],
+  exports: [ApiFirestoreService]
 })
 export class Tab1PageModule {}

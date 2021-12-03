@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-// import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-// import { ApiFirestoreService } from '../_core/services/api-firestore/api-firestore.service';
+import { ApiFirestoreService } from '../_core/services/api-firestore/api-firestore.service';
 
 @Component({
   selector: 'app-tab1',
@@ -12,26 +12,25 @@ import { Observable } from 'rxjs';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  // postForm: FormGroup;
+  postForm: FormGroup;
   items: Observable<any[]>;
   username: string;
   constructor(firestore: Firestore,
-              // private formBuilder: FormBuilder,
-              // private apiFirestoreService: ApiFirestoreService
+              private formBuilder: FormBuilder,
+              private apiFirestoreService: ApiFirestoreService
               ) {
     const group = collection(firestore, 'items');
     this.items = collectionData(group);
 
-    // this.postForm = this.formBuilder.group({
-  	// 	title: ['', Validators.required],
-  	// 	note: ['', Validators.required],
-    // });
+    this.postForm = this.formBuilder.group({
+  		title: ['', Validators.required],
+  		note: ['', Validators.required],
+    });
   }
 
   addCollection() {
-    // const formData = this.postForm.getRawValue();
-    // this.apiFirestoreService.create(formData);
-    console.log('it does nothing');
-    // , formData
+    const formData = this.postForm.getRawValue();
+    this.apiFirestoreService.create(formData);
+    console.log('it does nothing', formData);
   }
 }
