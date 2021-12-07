@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -15,7 +15,7 @@ export class Tab1Page {
   postForm: FormGroup;
   items: Observable<any[]>;
   username: string;
-  constructor(firestore: Firestore,
+  constructor(private firestore: Firestore,
               private formBuilder: FormBuilder,
               private noteService: NoteService
               ) {
@@ -30,7 +30,7 @@ export class Tab1Page {
 
   addCollection() {
     const formData = this.postForm.getRawValue();
-    //this.apiFirestoreService.create(formData);
-    console.log('it does nothing', formData);
+    console.log(formData);
+    this.noteService.create(formData, 'notes');
   }
 }
