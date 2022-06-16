@@ -6,6 +6,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { NoteService } from '../_core/services/note/note.service';
 
+
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -13,14 +15,16 @@ import { NoteService } from '../_core/services/note/note.service';
 })
 export class Tab1Page {
   postForm: FormGroup;
-  items: Observable<any[]>;
+  notes: Observable<any[]>;
   username: string;
   constructor(private firestore: Firestore,
               private formBuilder: FormBuilder,
               private noteService: NoteService
               ) {
-    const group = collection(firestore, 'items');
-    this.items = collectionData(group);
+    const group = collection(firestore, 'notes');
+    this.notes = collectionData(group);
+
+    // this.items = this.noteService.getData('items');
 
     this.postForm = this.formBuilder.group({
   		title: ['', Validators.required],
@@ -33,4 +37,8 @@ export class Tab1Page {
     console.log(formData);
     this.noteService.create(formData, 'notes');
   }
+
+  // delete(){
+
+  // }
 }

@@ -13,5 +13,26 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ul>
+    <li class="text" *ngFor="let note of notes | async; let i=index">
+      <ion-card>
+        <div *ngIf="!this.editingNote[i]; else editNote">
+          <div>{{note.title}}</div>
+          <div>{{note.note}}</div>
+          <ion-button (click)="edit()">Edit</ion-button>
+          <ion-button (click)="delete()">Delete</ion-button>
+        </div>
+        <ng-template #editNote>
+          <form class="postForm" [formGroup]="postForm">
+            <ion-input formControlName="title" placeholder={{note.title}}></ion-input>
+            <ion-textarea formControlName="note" placeholder={{note.note}}></ion-textarea>
+
+            <ion-button type="button" (click)="addCollection()">Submit</ion-button>
+          </form>
+        </ng-template>
+      </ion-card>
+    </li>
+  </ul>
+
+  
 </ion-content>
