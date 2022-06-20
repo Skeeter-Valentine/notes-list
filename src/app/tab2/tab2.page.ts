@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { NoteService } from '../_core/services/note/note.service';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-tab2',
@@ -12,14 +13,13 @@ import { NoteService } from '../_core/services/note/note.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
-  notes: Promise<any[]>;
+  notes: any;
   editingNote: boolean[]=[false];
   postForm: FormGroup;
   constructor(private firestore: Firestore,
               private formBuilder: FormBuilder,
               private noteService: NoteService,
               ) {
-
     // this.notes = async(resolve, reject)=> {await this.noteService.getData('notes')};
     // console.log(this.notes);
 
@@ -35,7 +35,10 @@ export class Tab2Page implements OnInit {
   }
 
   ngOnInit(): void {
-    this.noteService.getData('notes');
+    this.noteService.getData().subscribe(notes =>{
+      console.log(notes);
+      this.notes=notes;
+    });
   }
 
   // getNotes()

@@ -14,7 +14,7 @@
   </ion-header>
 
   <ul>
-    <li class="text" *ngFor="let note of notes | async; let i=index">
+    <li class="text" *ngFor="let note of notes let i=index">
       <ion-card>
         <div *ngIf="!this.editingNote[i]; else editNote">
           <div>{{note.title}}</div>
