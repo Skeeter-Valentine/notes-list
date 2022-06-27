@@ -1,24 +1,32 @@
 import { Injectable } from '@angular/core';
-// import { serverTimestamp } from '@angular/fire/firestore';
-// import { Observable } from 'rxjs';
-// import { addDoc, updateDoc, doc, Firestore, collectionData, collection, CollectionReference } from '@angular/fire/firestore';
+import { serverTimestamp } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { addDoc, updateDoc, doc, Firestore, collectionData, collection, CollectionReference } from '@angular/fire/firestore';
 import {first} from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
-import { Observable } from 'rxjs';
+import { Note } from '../../models/note';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteService {
-  notesCollection: AngularFirestoreCollection<any>;
-  notes: Observable<any[]>;
+  notesCollection: AngularFirestoreCollection<Note>;
+  notes: Observable<Note[]>;
   // readonly colName: string ;
   protected collection: any;
 
   constructor(protected afs: AngularFirestore) {
     this.notes = this.afs.collection('notes').valueChanges();
+    this.collection = this.afs.collection('notes');
+    
+    // snapshotChanges().map(changes => {
+    //   changes.map(a => {
+    //     const data = a.payload.doc.data();
+    //   });
+    // });
   }
+
 
   create(data: any, id: string = null): Promise<any> {
 

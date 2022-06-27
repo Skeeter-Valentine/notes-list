@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Firestore, collection, collectionData, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
 import { NoteService } from '../_core/services/note/note.service';
+import { Note } from '../_core/models/note';
 
 
 
@@ -15,7 +14,7 @@ import { NoteService } from '../_core/services/note/note.service';
 })
 export class Tab1Page {
   postForm: FormGroup;
-  notes: Observable<any[]>;
+  notes: Observable<Note[]>;
   username: string;
   constructor(private firestore: Firestore,
               private formBuilder: FormBuilder,
