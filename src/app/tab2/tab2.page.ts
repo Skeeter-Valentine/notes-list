@@ -48,11 +48,13 @@ export class Tab2Page implements OnInit {
   //   this.noteService.create(formData, 'notes');
   // }
 
-  // delete(){
-  //    deleteDoc(doc(this.firestore, 'notes', 'Note 3'));
-  // }
+  delete(note){
+    console.log(note);
+    this.noteService.delete(note);
+    //  deleteDoc(doc(this.firestore, 'notes', 'Note 3'));
+  }
 
-  // edit(){
-  //   this.editingNote=[true];
-  // }
+  edit(i){
+    this.editingNote[i]=true;
+  }
 }

@@ -3,7 +3,7 @@ import { serverTimestamp } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { addDoc, updateDoc, doc, Firestore, collectionData, collection, CollectionReference } from '@angular/fire/firestore';
 import {first} from 'rxjs/operators';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
 import { Note } from '../../models/note';
 
@@ -13,6 +13,7 @@ import { Note } from '../../models/note';
 export class NoteService {
   notesCollection: AngularFirestoreCollection<Note>;
   notes: Observable<Note[]>;
+  noteDoc: AngularFirestoreDocument<Note>;
   // readonly colName: string ;
   protected collection: any;
 
@@ -47,14 +48,17 @@ export class NoteService {
   getData(){
     return this.notes;
   }
+
   // return this.notes.doc(identifier).ref.get();
   // https://github.com/angular/angularfire/blob/master/samples/modular/src/app/upboats/upboats.component.ts
 
-  // delete(id: string): Promise<any> {
-    //this.logger.logVerbose(`[BaseService] deleting item ${id}`);
+  delete(note: Note) {
+    this.noteDoc = this.afs.doc(`notes/${note._id}`);
+    this.noteDoc.delete();
+    // this.logger.logVerbose(`[BaseService] deleting item ${id}`);
 
     // const docRef = this.collection.doc<T>(id);
     // return docRef.delete();
-  // }
+  }
 
 }

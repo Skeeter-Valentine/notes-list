@@ -19,8 +19,8 @@
         <div *ngIf="!this.editingNote[i]; else editNote">
           <div>{{note.title}}</div>
           <div>{{note.note}}</div>
-          <ion-button (click)="edit()">Edit</ion-button>
-          <ion-button (click)="delete()">Delete</ion-button>
+          <ion-button (click)="edit([i])">Edit</ion-button>
+          <ion-button (click)="delete(note)">Delete</ion-button>
         </div>
         <ng-template #editNote>
           <form class="postForm" [formGroup]="postForm">
