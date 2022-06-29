@@ -23,15 +23,10 @@ export class Tab2Page implements OnInit {
     // this.notes = async(resolve, reject)=> {await this.noteService.getData('notes')};
     // console.log(this.notes);
 
-
-    // const docRef = collection(firestore, 'notes').doc<T>(id);
-    // const group = collection(firestore, 'notes');
-    // this.notes = collectionData(group);
-
-    // this.postForm = this.formBuilder.group({
-  	// 	title: ['', ValidatoMy crs.required],
-  	// 	note: ['', Validators.required],
-    // });
+    this.postForm = this.formBuilder.group({
+  		title: ['', ValidatoMy crs.required],
+  		note: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
