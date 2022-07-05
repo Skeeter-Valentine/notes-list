@@ -24,8 +24,8 @@
         </div>
         <ng-template #editNote>
           <form class="postForm" [formGroup]="postForm">
-            <ion-input formControlName="title" placeholder={{note.title}}></ion-input>
-            <ion-textarea formControlName="note" placeholder={{note.note}}></ion-textarea>
+            <ion-input formControlName="title" placeholder={{note.title}} [(ngModel)]="note.title"></ion-input>
+            <ion-textarea formControlName="note" placeholder={{note.note}} [(ngModel)]="note.note"></ion-textarea>
 
             <ion-button type="button" (click)="addCollection()">Submit</ion-button>
           </form>

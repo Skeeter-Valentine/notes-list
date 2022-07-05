@@ -24,7 +24,7 @@ export class Tab2Page implements OnInit {
     // console.log(this.notes);
 
     this.postForm = this.formBuilder.group({
-  		title: ['', ValidatoMy crs.required],
+  		title: ['', Validators.required],
   		note: ['', Validators.required],
     });
   }
@@ -51,5 +51,11 @@ export class Tab2Page implements OnInit {
 
   edit(i){
     this.editingNote[i]=true;
+  }
+
+  addCollection(){
+    const formData = this.postForm.getRawValue();
+    console.log(formData);
+    this.noteService.update(formData);
   }
 }

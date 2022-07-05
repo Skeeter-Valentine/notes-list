@@ -61,4 +61,9 @@ export class NoteService {
     // return docRef.delete();
   }
 
+  update(note: Note){
+    this.noteDoc = this.afs.doc(`notes/${note._id}`);
+    this.noteDoc.update(note);
+  }
+
 }
