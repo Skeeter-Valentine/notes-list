@@ -53,9 +53,15 @@ export class Tab2Page implements OnInit {
     this.editingNote[i]=true;
   }
 
-  addCollection(){
-    const formData = this.postForm.getRawValue();
-    console.log(formData);
-    this.noteService.update(formData);
+  notEditing(i){
+    this.editingNote[i]=false;
+  }
+
+  updateCollection(note){
+    // const formData = this.postForm.getRawValue();
+    // console.log(formData);
+    console.log(note);
+    this.noteService.update(note);
+    // this.notEditing(i);
   }
 }
