@@ -13,7 +13,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ul>
+  <ul list-style-type: none>
     <li class="text" *ngFor="let note of notes let i=index">
       <ion-card>
         <div *ngIf="!this.editingNote[i]; else editNote">
