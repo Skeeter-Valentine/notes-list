@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { Note } from '../_core/models/note';
 import { NoteService } from '../_core/services/note/note.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { NoteService } from '../_core/services/note/note.service';
 export class Tab2Page implements OnInit {
 
   notes: any;
-  editingNote: boolean[]=[false];
+  editingNote: boolean = false;
+  noteToEdit: any;
 
   constructor(private noteService: NoteService) {}
 
@@ -17,6 +19,7 @@ export class Tab2Page implements OnInit {
     this.noteService.getData().subscribe(notes =>{
       console.log(notes);
       this.notes=notes;
+      this.noteToEdit = false;
     });
   }
 
@@ -24,15 +27,19 @@ export class Tab2Page implements OnInit {
     this.noteService.delete(note);
   }
 
-  edit(i){
-    this.editingNote[i]=true;
+  edit(event, note){
+    this.editingNote = true;
+    console.log(this.editingNote);
+    this.noteToEdit = note;
+    console.log(this.noteToEdit);
   }
 
-  notEditing(i){
-    this.editingNote[i]=false;
+  notEditing(){
+    this.editingNote = false;
   }
 
   updateCollection(note){
     this.noteService.update(note);
+    this.notEditing();
   }
 }

@@ -16,19 +16,19 @@
   <ul list-style-type: none>
     <li class="text" *ngFor="let note of notes let i=index">
       <ion-card>
-        <div *ngIf="!this.editingNote[i]; else editNote">
-          <div>{{note.title}}</div>
-          <div>{{note.note}}</div>
-          <ion-button (click)="edit([i])">Edit</ion-button>
-          <ion-button (click)="delete(note)">Delete</ion-button>
-        </div>
-        <ng-template #editNote>
+        <div *ngIf="this.editingNote && noteToEdit._id === note._id; else editNote"> 
           <form class="postForm" (ngSubmit)=updateCollection(note)>
             <ion-input name="title" placeholder={{note.title}} [(ngModel)]="note.title" ></ion-input>
             <ion-textarea name="note" placeholder={{note.note}} [(ngModel)]="note.note" ></ion-textarea>
 
             <ion-button type="submit" >Submit</ion-button>
           </form>
+        </div>
+        <ng-template #editNote>
+          <div>{{note.title}}</div>
+          <div>{{note.note}}</div>
+          <ion-button (click)="edit($event, note)">Edit</ion-button>
+          <ion-button (click)="delete(note)">Delete</ion-button>
         </ng-template>
       </ion-card>
     </li>
