@@ -27,7 +27,7 @@
         <ng-template #editNote>
           <div>{{note.title}}</div>
           <div>{{note.note}}</div>
-          <ion-button (click)="edit($event, note)">Edit</ion-button>
+          <ion-button (click)="edit(note)">Edit</ion-button>
           <ion-button (click)="delete(note)">Delete</ion-button>
         </ng-template>
       </ion-card>

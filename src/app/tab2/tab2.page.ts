@@ -17,21 +17,18 @@ export class Tab2Page implements OnInit {
 
   ngOnInit(): void {
     this.noteService.getData().subscribe(notes =>{
-      console.log(notes);
       this.notes=notes;
-      this.noteToEdit = false;
     });
+    this.noteToEdit = null;
   }
 
   delete(note){
     this.noteService.delete(note);
   }
 
-  edit(event, note){
+  edit(note){
     this.editingNote = true;
-    console.log(this.editingNote);
     this.noteToEdit = note;
-    console.log(this.noteToEdit);
   }
 
   notEditing(){

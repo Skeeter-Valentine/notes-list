@@ -13,5 +13,20 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <form class="postForm" [formGroup]="postForm">
+    <ion-input formControlName="username" placeholder="Username"></ion-input>
+    <ion-textarea formControlName="password" placeholder="Password"></ion-textarea>
+
+    <ion-button type="button" (click)="submit()">Submit</ion-button>
+  </form> 
+
+  <!-- <form class="postForm2" [formGroup]="postForm2">
+    <ion-input formControlName="username2" placeholder="Username"></ion-input>
+    <ion-textarea formControlName="password2" placeholder="Password"></ion-textarea>
+
+    <ion-button type="button" (click)="submit2()">Login</ion-button>
+  </form> -->
+  <ion-button type="button" (click)="loginPassword()">Login</ion-button>
+  <ion-button type="button" (click)="loginOptions()">Login options</ion-button>
+
 </ion-content>
