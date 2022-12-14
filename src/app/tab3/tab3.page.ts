@@ -38,6 +38,16 @@ export class Tab3Page {
     console.log(formData);
     this.authService.signIn(formData)
   }
+
+  logOut(){
+    this.authService.signOut();
+  }
+
+  resetPassword(){
+    const formData = this.postForm.getRawValue();
+    this.authService.resetPassword(formData.username);
+    console.log('sending');
+  }
 }
 
 // async signIn(form, container: any): Promise<any> {

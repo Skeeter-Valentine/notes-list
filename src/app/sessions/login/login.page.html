@@ -5,5 +5,10 @@
 </ion-header>
 
 <ion-content>
+  <form class="postForm" [formGroup]="postForm">
+    <ion-input formControlName="username" placeholder="Username"></ion-input>
+    <ion-textarea formControlName="password" placeholder="Password"></ion-textarea>
 
+    <ion-button type="button" (click)="submit()">Submit</ion-button>
+  </form> 
 </ion-content>
